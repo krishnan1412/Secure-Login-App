@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SECRET_KEY = credentials('secret_key')
-        SSH_ID= credentials('ssh_id')
+        SSH_ID= credentials('SSH_ID')
         SSH_HOST = ('15.164.226.178')
         SSH_USER = credentials('ubuntu')
     }
@@ -12,7 +12,7 @@ pipeline {
                 steps {
                     sh """ 
                     ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST '
-                    git clone "https://github.com/krishnan1412/Secure-Login-App.git" '
+                    git clone https://github.com/krishnan1412/Secure-Login-App.git '
                     """
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
         stage ("build the docker image") {
             steps {
                 sh """
-                ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST '
+                ssh -o StrictHostKeyChecking=no -i $SSH_ID $SSH_USER@$SSH_HOST '
                 cd Secure-Login-App && \
                 sudo docker-compose up -d --build'
                 """
