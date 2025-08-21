@@ -3,7 +3,7 @@ pipeline {
     environment {
         SECRET_KEY = credentials('secret_key')
         SSH_ID= credentials('ssh_id')
-        SSH_HOST = credentials('ssh_host')
+        SSH_HOST = ('15.164.226.178')
         SSH_USER = credentials('ubuntu')
     }
     stages {
